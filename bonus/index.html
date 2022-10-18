@@ -8,22 +8,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Campo Minato</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./assets/js/main.js" defer></script>
 </head>
 
 <body>
+    <header id="site_header">
+        <div class="container">
+            <h1 class="title"><img src="./assets/img/logo.webp" alt="logo" id="logo"> Mine Sweeper</h1>
+            <div class="generate">
+                <div class="result">
+                    <span id="win-lose"></span>
+                    <span id="score"></span>
+                </div>
+                <button id="generate">Genera</button>
+            </div>
+        </div>
+
+    </header>
+    <!-- /#site_header -->
     <main id="site_main">
         <div class="container">
-            <div class="generate">
-                <button id="generate">Genera</button>
-                <select name="gridWidth" id="difficulties">
-                    <option value="10">difficoltà 1</option>
-                    <option value="9">difficoltà 2</option>
-                    <option value="7">difficoltà 3</option>
-                </select>
-            </div>
+            <div class="layover"></div>
+
+
         </div>
     </main>
     <!-- /#site_main -->
