@@ -6,49 +6,82 @@ const container = document.querySelector('#site_main .container');
 const button = document.getElementById('generate');
 const maxCells = 100;
 const rowNum = 10;
+const bombs = generateBombs(maxCells);
+let score = 0;
 let boxes = [];
-//console.log(container);
+console.log(bombs);
 
 
 
 
-button.addEventListener('click', ()=>{
-    if(!container.classList.contains('generated')){
-        generateGrid(maxCells, container);
-        boxes = document.querySelectorAll('.box');
-        generateNumbersWidth(boxes, rowNum);
-    }
-    
+button.addEventListener('click', function () {
+    generateGrid(maxCells, container);
+    boxes = document.querySelectorAll('.box');
+    generateNumbersWidth(boxes, rowNum);
+
+
 });
 
 
-
-function generateGrid(cellsNum, domEl){
-    for (let i = 1; i <= cellsNum; i++){
+// creazione della griglia resettando gli stati precedenti
+function generateGrid(cellsNum, domEl) {
+    resetGrid();
+    for (let i = 1; i <= cellsNum; i++) {
         let boxEl = document.createElement('div');
         boxEl.classList.add('box');
         domEl.insertAdjacentElement('beforeend', boxEl)
     }
     domEl.classList.add('generated');
 }
-
-function generateNumbersWidth(domElements, rowNum){
-    for(let i = 0; i < domElements.length; i++){
+// genero i numerim da aggiungere alle celle e la larghezza delle celle
+function generateNumbersWidth(domElements, rowNum) {
+    for (let i = 0; i < domElements.length; i++) {
         let number = i;
         let element = domElements[i];
         element.innerText = ++number;
-        element.style.width =`calc(100%/${rowNum})`
-        element.addEventListener('click', ()=>{
+        element.style.width = `calc(100%/${rowNum})`
+        element.addEventListener('click', function () {
             console.log(this);
-            console.log(element.innerText);
-            element.classList.add('clicked');
+            console.log(this.innerText);
+            if (bombs.includes(Number(this.innerText))) {
+                console.log('Hai perso')
+                element.classList.add('clicked-bomb');
+            } else {
+                element.classList.add('clicked');
+                ++score;
+            }
+            console.log(score);
+
         })
     }
 
 }
 
-function generateBombs(maxCells){
+// reset della griglia rimuovo gli elementi 
+function resetGrid() {
+    for (let i = boxes.length - 1; i >= 0; i--) {
+        boxes[i].remove();
+    }
+    console.log(boxes);
+
+}
+
+
+function getRandomArbitrary(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+// creazione delle bombe
+function generateBombs(maxCells) {
     let bombs = [];
+
+    while (bombs.length !== 16) {
+        let bomb = getRandomArbitrary(1, maxCells);
+        if (!bombs.includes(bomb)) {
+            bombs.push(bomb);
+        }
+
+    }
+    return bombs;
 
 }
 

@@ -51,6 +51,10 @@ body {
     background-color: var(--box-click);
 }
 
+.box.clicked-bomb {
+    background-color: palevioletred;
+}
+
 .title {
     flex-basis: 40%;
     text-align: center;
