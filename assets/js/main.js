@@ -2,7 +2,7 @@
 Ci saranno quindi 10 caselle per ognuna delle 10 righe.
 Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata. */
 
-const container = document.querySelector('.container');
+const container = document.querySelector('#site_main .container');
 const button = document.getElementById('generate');
 let boxes = [];
 //console.log(container);
@@ -25,7 +25,7 @@ function generateGrid(cellsNum, domEl){
     for (let i = 1; i <= cellsNum; i++){
         let boxEl = document.createElement('div');
         boxEl.classList.add('box');
-        domEl.insertAdjacentElement('afterbegin', boxEl)
+        domEl.insertAdjacentElement('beforeend', boxEl)
     }
     domEl.classList.add('generated');
 }
@@ -39,7 +39,7 @@ function generateNumbersWidth(domElements, rowNum){
         element.addEventListener('click', ()=>{
             //console.log(this);
             console.log(element.innerText);
-            element.classList.toggle('clicked');
+            element.classList.add('clicked');
         })
     }
 
