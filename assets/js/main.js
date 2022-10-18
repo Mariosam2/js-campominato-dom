@@ -4,6 +4,8 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed 
 
 const container = document.querySelector('#site_main .container');
 const button = document.getElementById('generate');
+const maxCells = 100;
+const rowNum = 10;
 let boxes = [];
 //console.log(container);
 
@@ -12,9 +14,9 @@ let boxes = [];
 
 button.addEventListener('click', ()=>{
     if(!container.classList.contains('generated')){
-        generateGrid(100, container);
+        generateGrid(maxCells, container);
         boxes = document.querySelectorAll('.box');
-        generateNumbersWidth(boxes, 10);
+        generateNumbersWidth(boxes, rowNum);
     }
     
 });
@@ -37,11 +39,16 @@ function generateNumbersWidth(domElements, rowNum){
         element.innerText = ++number;
         element.style.width =`calc(100%/${rowNum})`
         element.addEventListener('click', ()=>{
-            //console.log(this);
+            console.log(this);
             console.log(element.innerText);
             element.classList.add('clicked');
         })
     }
+
+}
+
+function generateBombs(maxCells){
+    let bombs = [];
 
 }
 
