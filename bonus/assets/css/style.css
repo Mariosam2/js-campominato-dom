@@ -96,7 +96,7 @@ header .container {
 }
 
  .generate{
-    flex-basis: 60%;
+   width : 60%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -131,6 +131,21 @@ header .container {
 .box:hover, #generate:hover{
     cursor: pointer;
 }
+
+
+select{
+    background-color: var(--xanadu);
+    border-color: var(--turquoise-green);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+
+ select:focus {
+    outline: none;
+}
+
 /* #endregion */
 
 

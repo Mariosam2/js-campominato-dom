@@ -6,9 +6,10 @@ const container = document.querySelector('#site_main .container');
 const layover = document.querySelector('.layover')
 const button = document.getElementById('generate');
 const winLose = document.getElementById('win-lose');
+const difficulties = document.getElementById('difficulties');
 const scoreEl = document.getElementById('score');
-const maxCells = 100;
-const rowNum = 10;
+let maxCells;
+let rowNum;
 let bombs = [];
 let score;
 let boxes = [];
@@ -18,12 +19,18 @@ let boxes = [];
 
 
 button.addEventListener('click', function () {
+    rowNum = Number(difficulties.value);
+    maxCells = rowNum * rowNum;
     generateGrid(maxCells, container);
     console.log(bombs);
     boxes = document.querySelectorAll('.box');
     generateNumbersWidth(boxes, rowNum);
 
 
+});
+
+difficulties.addEventListener('input', ()=>{
+    container.classList.remove('generated');
 });
 
 
