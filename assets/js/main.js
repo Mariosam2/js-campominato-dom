@@ -3,6 +3,7 @@ Ci saranno quindi 10 caselle per ognuna delle 10 righe.
 Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata. */
 
 const container = document.querySelector('#site_main .container');
+const layover = document.querySelector('.layover')
 const button = document.getElementById('generate');
 const winLose = document.getElementById('win-lose');
 const scoreEl = document.getElementById('score');
@@ -17,7 +18,6 @@ let boxes = [];
 
 
 button.addEventListener('click', function () {
-    layover = document.querySelector('.layover') || [];
     generateGrid(maxCells, container);
     console.log(bombs);
     boxes = document.querySelectorAll('.box');
@@ -53,18 +53,14 @@ function generateNumbersWidth(domElements, rowNum) {
                 //aggiungo colore rosso
                 element.classList.add('clicked-bomb');
                 //aggiungo un div sopra alle box per non permettere più di cliccare dopo aver perso
-                let layover = document.createElement('div');
-                layover.classList.add('layover', 'display');
-                container.insertAdjacentElement('afterbegin', layover);
+                layover.classList.add('display');
                 //display dello score e del risultato
                 winLose.innerHTML = 'Hai perso!'
                 scoreEl.innerHTML = `Score: ${score}`;
             } else if (score == maxCells - bombs.length){
                 //console.log('Hai vinto');
                 element.classList.add('clicked');
-                let layover = document.createElement('div');
-                layover.classList.add('layover', 'display');
-                container.insertAdjacentElement('afterbegin', layover);
+                layover.classList.add('display');
                 winLose.innerHTML = 'Hai vinto!'
                 scoreEl.innerHTML = `Score: ${score}`;
             } else {
@@ -87,10 +83,7 @@ function resetGrid() {
         boxes[i].remove();
     }
     //console.log(boxes);
-    if(layover.length !== 0) {
-        layover.classList.remove('display');
-
-    }
+    layover.classList.remove('display');
     winLose.innerHTML = '';
     scoreEl.innerHTML = '';
     
