@@ -15,11 +15,17 @@
     font-family: 'IBM Plex Mono', monospace;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 body {
     color: white;
     background-color: var(--bg-primary);
 }
 .container {
+    position: relative;
     width: 80%;
     max-width: 1320px;
     margin: 1rem auto;
@@ -28,14 +34,38 @@ body {
     flex-wrap: wrap;
 }
 
+.title {
+    display: flex;
+    align-items: center;
+}
+
 
 /* #region header */
-
+header .container {
+    background-color: var(--bg-secondary);
+}
 /* #endregion */
 
 
 /* #region main */
 
+#logo {
+    max-width: 50px;
+    margin: 0 1rem;
+}
+
+.layover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.layover.display {
+    z-index: 9999;
+}
 
 .box {
     background-color: var(--xanadu);
@@ -69,7 +99,19 @@ body {
     flex-basis: 60%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     padding: 2rem 1rem;
+}
+
+.result {
+    margin-right:  auto;
+    font-size: 1.2rem;
+   
+}
+
+
+.result >*{
+    margin: 0 1rem;
 }
 
 #generate {
@@ -80,6 +122,10 @@ body {
     font-size: 1.8rem;
     border-style: solid;
     border-radius: 1rem;
+}
+
+#generate:active {
+    scale: 0.9;
 }
 
 
