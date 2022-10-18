@@ -1,0 +1,76 @@
+:root {
+    --bg-primary: #343e3d;
+    --bg-secondary: #7bd389;
+    --box-click: #38e4ae;
+    --xanadu: #607466;
+    --turquoise-green: #aedcc0;
+
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+body {
+    background-color: var(--bg-primary);
+}
+
+.container {
+    width: 80%;
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.box {
+    color: white;
+    background-color: var(--xanadu);
+    aspect-ratio: 1/1;
+    border: 1px solid var(--turquoise-green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+}
+
+.box.clicked {
+    background-color: var(--box-click);
+}
+
+.generate >* {
+    margin: 0 1rem;
+}
+
+ .generate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+#generate {
+    background-color: var(--xanadu);
+    border-color: var(--turquoise-green);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    font-size: 2rem;
+    border-style: solid;
+    border-radius: 1rem;
+}
+
+
+
+
+.box:hover{
+    cursor: pointer;
+}
+
+
+
